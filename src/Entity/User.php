@@ -42,6 +42,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $orders;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $fullName;
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
@@ -162,6 +167,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $order->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getFullName(): ?string
+    {
+        return $this->fullName;
+    }
+
+    public function setFullName(string $fullName): self
+    {
+        $this->fullName = $fullName;
 
         return $this;
     }
