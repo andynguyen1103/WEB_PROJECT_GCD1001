@@ -3,10 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use http\Env\Request;
+use App\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -26,30 +27,28 @@ class UserController extends AbstractController
     /**
      * @Route ("/profile/edit/{id}", name="edit_profile")
      */
-    public function editProfile(Request $request)
+    public function editProfile($id,Request $request)
     {
         //find user in the database
         $em = $this->getDoctrine()->getManager();
-        $user = $em->getRepository('App:User')->find($id);
+        $user = $em->getRepository(User::class)->find($id);
         //create a form for edit profile
         $form=$this->createFormBuilder($user)
             ->add('fullName')
             ->add('email')
-            ->add('Save',SubmitType::class)
+            ->getForm();
         ;
         $form->handleRequest($request);
         if ($form->isSubmitted()&&$form->isValid())
         {
             //change email and full name
-            $em->getRepository('App:User')->changeEmail($id,$request->request->get('user')['email']);
-            $em->getRepository('App:User')->changeFullName($id,$request->request->get('user')['fullName']);
+           $em->persist($user);
+           $em->flush();
             return $this->redirectToRoute('app_user');
         }
         return $this->render('user/edit.html.twig', [
             'form' => $form->createView()]
         );
-
-
     }
 
 }
