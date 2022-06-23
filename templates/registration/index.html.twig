@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
     <link href="{{ asset('css/LogReg.css') }}" rel="stylesheet">
-
 {% endblock %}
 {% block body %}
     <body>
@@ -10,16 +9,16 @@
             <p class="login-text" style="font-size: 2rem; font-weight: 800;">Sign Up</p>
             {{ form_start(form) }}
             <div class="input-group">
-                {{ form_row(form.fullName)}}
+                <input placeholder="Full Name" {{ form_widget(form.fullName)}}
             </div>
             <div class="input-group">
-                {{ form_row(form.email)}}
+                 <input placeholder="Email" {{ form_widget(form.email)}}
             </div>
             <div class="input-group">
-                {{ form_row(form.password.first)}}
+                <input placeholder="Password" {{ form_widget(form.password.first)}}
             </div>
             <div class="input-group">
-                {{ form_row(form.password.second)}}
+                <input placeholder="Confirm Password" {{ form_widget(form.password.second)}}
             </div>
             <div class="input-group">
                 <button name="submit" class="btn">Sign Up</button>
