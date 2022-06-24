@@ -56,23 +56,6 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->add($user, true);
     }
 
-    public function changeEmail($id,$email)
-    {
-        return $this->createQueryBuilder('u')
-            ->set('u.email',':email')
-            ->setParameter('email',$email)
-            ->getQuery()
-            ->getResult();
-    }
-
-    public function changeFullName($id,$name)
-    {
-        return $this->createQueryBuilder('u')
-            ->set('u.fullName',':name')
-            ->setParameter('name',$name)
-            ->getQuery()
-            ->getResult();
-    }
 
 //    /**
 //     * @return User[] Returns an array of User objects
