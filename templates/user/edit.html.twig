@@ -1,19 +1,27 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Edit Profile{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="{{ asset('css/EditProfile.css') }}" rel="stylesheet">
+{% endblock %}
 {% block body %}
+
     <div class="container">
-    <form action="" method="POST" class="login-email">
-        <p class="login-text" style="font-size: 2rem; font-weight: 800;">Edit</p>
-        {{ form_start(form) }}
-        <div class="input-group">
-            {{ form_widget(form.fullName)}}
-        </div>
-        <div class="input-group">
-            {{ form_widget(form.email)}}
-        </div>
-        <div class="input-group">
+        <div class="leftbox"></div>
+        <div class="rightbox">
+            <div class="input-group">
+                <h1>Update User Profile</h1>
+                {{ form_start(form) }}
+                <h2>Username</h2>
+                {{ form_widget(form.fullName)}}
+                <h2>Email</h2>
+                {{ form_widget(form.email)}}
+            </div>
             <button name="submit" class="btn">Save</button>
+            {{ form_end(form) }}
         </div>
-        {{ form_end(form) }}
-    </form>
+    </div>
+
 {% endblock %}
