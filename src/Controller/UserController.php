@@ -18,6 +18,7 @@ class UserController extends AbstractController
     /**
      * @Route("/profile", name="app_user")
      */
+
     public function viewProfile(): Response
     {
         if($this->isGranted('ROLE_USER'))
@@ -26,9 +27,11 @@ class UserController extends AbstractController
         }
         return $this->redirectToRoute('app_login');
     }
+
     /**
      * @Route ("/profile/edit", name="edit_profile")
      */
+
     public function editProfile(Request $request,UserInterface $user)
     {
         //find user in the database
@@ -55,9 +58,11 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route ("profile/delete", name="delete_profile")
+     * @Route ("/profile/delete", name="delete_profile")
      */
-     public function deleteProfile(UserInterface $user){
+
+     public function deleteProfile(UserInterface $user)
+     {
          $em=$this->getDoctrine()->getManager();
          $user=$em->getRepository(User::class)->find($user->getId());
          $em->remove($user);
@@ -67,4 +72,6 @@ class UserController extends AbstractController
          $session->invalidate();
          return $this->redirectToRoute('app_login');
      }
+
+
 }
