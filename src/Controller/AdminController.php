@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminController extends AbstractController
 {
     /**
-     * @Route("/admin", name="app_admin")
+     * @Route("/admin", name="option_admin")
      */
     public function viewOptions(): Response
     {
@@ -41,6 +42,7 @@ class AdminController extends AbstractController
         $form=$this->createFormBuilder($user)
             ->add('fullName')
             ->add('email')
+            ->add('save',SubmitType::class)
             ->getForm();
         ;
         $form->handleRequest($request);
