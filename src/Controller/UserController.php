@@ -70,7 +70,7 @@ class UserController extends AbstractController
         //reset session
          $session = new Session();
          $session->invalidate();
-         return $this->redirectToRoute('app_login');
+         return $this->redirectToRoute('admin_product');
      }
 
 
