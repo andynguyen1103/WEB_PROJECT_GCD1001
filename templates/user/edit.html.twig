@@ -2,16 +2,13 @@
 
 {% block title %}Edit Profile{% endblock %}
 
-{% block stylesheets %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link href="{{ asset('css/EditProfile.css') }}" rel="stylesheet">
-{% endblock %}
+
 {% block body %}
 
-    <div class="container">
+    <div class="userProfile">
         <div class="leftbox"></div>
         <div class="rightbox">
-            <div class="input-group">
+            <div class="edit-user">
                 <h1>Update User Profile</h1>
                 {{ form_start(form) }}
                 <h2>Username</h2>
@@ -19,7 +16,7 @@
                 <h2>Email</h2>
                 {{ form_widget(form.email)}}
             </div>
-            <button name="submit" class="btn">Save</button>
+            <button name="submit" class="editBtn">Save</button>
             {{ form_end(form) }}
         </div>
     </div>

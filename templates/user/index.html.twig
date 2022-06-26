@@ -2,14 +2,10 @@
 
 {% block title %}Profile{% endblock %}
 
-{#Link Css#}
-{% block stylesheets %}
-    <link href="{{ asset('css/Profile.css') }}" rel="stylesheet">
-{% endblock %}
 
 {#Body#}
 {% block body %}
-    <div class="container">
+    <div class="userProfile">
         <div class="leftbox">
             <nav>
                 <a href="">
@@ -18,7 +14,7 @@
                 <a href="">
                     <i class='bx bxs-credit-card'></i>
                 </a>
-                <a href="">
+                <a href="{{ path('delete_profile') }}">
                     {#Nut Delete#}
                     <i class='bx bx-x-circle'></i>
                 </a>
@@ -27,6 +23,7 @@
                     <i class='bx bxs-edit-alt'></i>
                 </a>
                 <a href="{{ path('app_logout') }}">
+{#                    Nut Logout#}
                     <i class='bx bxs-log-out-circle' ></i>
                 </a>
             </nav>
@@ -35,9 +32,9 @@
             <div class="profile tabShow">
                 <h1>User Profile</h1>
                 <h2>Username</h2>
-                <p>{{ app.user.fullName }}</p>
+                <p class="username">{{ app.user.fullName }}</p>
                 <h2>Email</h2>
-                <p>{{ app.user.email }}</p>
+                <p class="Email">{{ app.user.email }}</p>
             </div>
         </div>
     </div>
