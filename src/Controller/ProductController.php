@@ -18,4 +18,14 @@ class ProductController extends AbstractController
             ->findAll();
         return $this->render('product/index.html.twig',['products'=>$products]);
     }
+
+    /**
+     * @Route("/product/details/{id}",name="product_details")
+     */
+    public function detailsAction($id) {
+        $products = $this->getDoctrine()
+            ->getRepository(Product::class)
+            ->find($id);
+        return $this->render('product/details.html.twig',['products'=>$products]);
+    }
 }
