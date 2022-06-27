@@ -164,6 +164,7 @@ class AdminController extends AbstractController
             ->add('name')
             ->add('category')
             ->add('price')
+            ->add('description')
             ->add('save', SubmitType::class)
             ->getForm();
         ;
@@ -175,7 +176,7 @@ class AdminController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('admin_product');
         }
-        return $this->render('admin/editProduct.html.twig', [
+        return $this->render('admin/createProduct.html.twig', [
                 'form' => $form->createView()]
         );
     }
@@ -194,6 +195,7 @@ class AdminController extends AbstractController
             ->add('name')
             ->add('category')
             ->add('price')
+            ->add('description')
             ->add('save', SubmitType::class)
             ->getForm();
         ;
@@ -209,7 +211,9 @@ class AdminController extends AbstractController
                 'form' => $form->createView()]
         );
     }
+
     //delete product
+
     /**
      * @Route ("/admin/product/delete/{id}", name="delete_product")
      */
@@ -220,6 +224,72 @@ class AdminController extends AbstractController
         $em->remove($product);
         $em->flush();
         return $this->redirectToRoute('admin_product');
+    }
+
+    //view all categories
+    /**
+     * @Route ("/admin/category", name="admin_category")
+     */
+    public function viewCategory()
+    {
+        $categories=$this->getDoctrine()->getManager()->getRepository(Category::class)->findAll();
+        return $this->render('Admin/viewCategory.html.twig',['categories'=>$categories]);
+    }
+
+    //create category
+    /**
+     * @Route ("/admin/category/create", name="create_category")
+     */
+    public function createCategory(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        //get category id from current user
+        $category = new Category();
+        //create a form for edit category
+        $form=$this->createFormBuilder($category)
+            ->add('name')
+            ->add('save', SubmitType::class)
+            ->getForm();
+        ;
+        $form->handleRequest($request);
+        if ($form->isSubmitted()&&$form->isValid())
+        {
+            //save changes
+            $em->persist($category);
+            $em->flush();
+            return $this->redirectToRoute('admin_category');
+        }
+        return $this->render('admin/createCategory.html.twig', [
+                'form' => $form->createView()]
+        );
+    }
+
+    //edit category
+    /**
+     * @Route ("/admin/category/edit/{id}", name="edit_category")
+     */
+    public function editCategory($id,Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        //get category id from current user
+        $category = $this->getDoctrine()->getManager()->getRepository(Category::class)->find($id);
+        //create a form for edit category
+        $form=$this->createFormBuilder($category)
+            ->add('name')
+            ->add('save', SubmitType::class)
+            ->getForm();
+        ;
+        $form->handleRequest($request);
+        if ($form->isSubmitted()&&$form->isValid())
+        {
+            //save changes
+            $em->persist($category);
+            $em->flush();
+            return $this->redirectToRoute('admin_category');
+        }
+        return $this->render('admin/editCategory.html.twig', [
+                'form' => $form->createView()]
+        );
     }
 
 
