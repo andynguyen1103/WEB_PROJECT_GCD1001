@@ -37,7 +37,7 @@ security:
          - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY}
          - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY}
          - { path: ^/profile, roles: ROLE_USER }
-
+    access_denied_url: /login
 when@test:
     security:
         password_hashers:
