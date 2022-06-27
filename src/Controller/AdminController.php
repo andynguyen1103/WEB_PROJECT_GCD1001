@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Product;
 use App\Entity\User;
 use App\Form\UserType;
@@ -149,7 +150,35 @@ class AdminController extends AbstractController
         $products=$this->getDoctrine()->getManager()->getRepository(Product::class)->findAll();
         return $this->render('Admin/viewProduct.html.twig',['products'=>$products]);
     }
-
+    //create product
+    /**
+     * @Route ("/admin/product/create", name="create_product")
+     */
+    public function createProduct(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        //get product id from current user
+        $product = new Product();
+        //create a form for edit product
+        $form=$this->createFormBuilder($product)
+            ->add('name')
+            ->add('category')
+            ->add('price')
+            ->add('save', SubmitType::class)
+            ->getForm();
+        ;
+        $form->handleRequest($request);
+        if ($form->isSubmitted()&&$form->isValid())
+        {
+            //save changes
+            $em->persist($product);
+            $em->flush();
+            return $this->redirectToRoute('admin_product');
+        }
+        return $this->render('admin/editProduct.html.twig', [
+                'form' => $form->createView()]
+        );
+    }
     //edit product
     /**
      * @Route ("/admin/product/edit/{id}", name="edit_product")
@@ -174,7 +203,7 @@ class AdminController extends AbstractController
             //save changes
             $em->persist($product);
             $em->flush();
-            return $this->redirectToRoute('admin_user');
+            return $this->redirectToRoute('admin_product');
         }
         return $this->render('admin/editProduct.html.twig', [
                 'form' => $form->createView()]
