@@ -1,5 +1,29 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ form(form) }}
+    <body>
+    <div class="container">
+        <form action="" method="POST" class="login-email">
+            <p class="login-text" style="font-size: 2rem; font-weight: 800;">Sign Up</p>
+            {{ form_start(form) }}
+            <div class="input-group">
+                <input placeholder="Full Name" {{ form_widget(form.fullName)}}
+            </div>
+            <div class="input-group">
+                 <input placeholder="Email" {{ form_widget(form.email)}}
+            </div>
+            <div class="input-group">
+                <input placeholder="Password" {{ form_widget(form.password.first)}}
+            </div>
+            <div class="input-group">
+                <input placeholder="Confirm Password" {{ form_widget(form.password.second)}}
+            </div>
+            <div class="input-group">
+                <button name="submit" class="btn">Sign Up</button>
+            </div>
+            <p class="login-register-text">Have an account? <a href="{{ path('app_login') }}">Sign In</a>.</p>
+            {{ form_end(form) }}
+        </form>
+    </div>
+    </body>
 {% endblock %}
