@@ -1,1 +1,28 @@
-{{ form(form) }}
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Product{% endblock %}
+
+
+{% block body %}
+    <div class="userProfile">
+        <div class="leftbox"></div>
+        <div class="rightbox">
+            <div class="edit-user">
+                <h1>Edit Product</h1>
+                {{ form_start(form) }}
+                <h2>Product Name</h2>
+                {{ form_widget(form.name)}}
+                <h2>Category</h2>
+                {{ form_widget(form.category)}}
+                <h2>Price</h2>
+                {{ form_widget(form.price)}}
+                <h2>Description</h2>
+                {{ form_widget(form.description)}}
+            </div>
+            <button name="submit" class="editBtn">Save</button>
+            <button name="submit" class="editBtn"><a href="{{ path('admin_user') }}">Back</a></button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,1 +1,22 @@
-{{ form(form) }}
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Category{% endblock %}
+
+
+{% block body %}
+    <div class="userProfile">
+        <div class="leftbox"></div>
+        <div class="rightbox">
+            <div class="edit-user">
+                <h1>Edit Category</h1>
+                {{ form_start(form) }}
+                <h2>Category Name</h2>
+                {{ form_widget(form.name)}}
+            </div>
+            <button name="submit" class="editBtn">Save</button>
+            <button name="submit" class="editBtn"><a href="{{ path('admin_user') }}">Back</a></button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}

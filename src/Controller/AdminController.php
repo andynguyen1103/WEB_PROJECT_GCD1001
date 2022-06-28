@@ -80,7 +80,7 @@ class AdminController extends AbstractController
                 'expanded' => true,
                 'required' => true,
             ])
-            ->add('save',SubmitType::class)
+
             ->getForm();
         $form->handleRequest($request);
         if ($form->isSubmitted()&&$form->isValid())
@@ -114,7 +114,6 @@ class AdminController extends AbstractController
         $form=$this->createFormBuilder($user)
             ->add('fullName')
             ->add('email')
-            ->add('save',SubmitType::class)
             ->getForm();
         ;
         $form->handleRequest($request);
@@ -165,7 +164,7 @@ class AdminController extends AbstractController
             ->add('category')
             ->add('price')
             ->add('description')
-            ->add('save', SubmitType::class)
+
             ->getForm();
         ;
         $form->handleRequest($request);
@@ -196,7 +195,6 @@ class AdminController extends AbstractController
             ->add('category')
             ->add('price')
             ->add('description')
-            ->add('save', SubmitType::class)
             ->getForm();
         ;
         $form->handleRequest($request);
@@ -248,7 +246,7 @@ class AdminController extends AbstractController
         //create a form for edit category
         $form=$this->createFormBuilder($category)
             ->add('name')
-            ->add('save', SubmitType::class)
+
             ->getForm();
         ;
         $form->handleRequest($request);
@@ -276,7 +274,6 @@ class AdminController extends AbstractController
         //create a form for edit category
         $form=$this->createFormBuilder($category)
             ->add('name')
-            ->add('save', SubmitType::class)
             ->getForm();
         ;
         $form->handleRequest($request);

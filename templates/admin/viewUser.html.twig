@@ -1,34 +1,36 @@
 {% extends 'base.html.twig' %}
-{% block stylesheets %}
-{% endblock %}
+
 
 {% block body %}
-{#  address to create user  #}
-    <a href="{{ path('admin_create_user') }}">Create user</a>
-    <table class="table table-striped">
+
+    <div class="userList">
+        List User
+    </div>
+    <table class="content-table">
         <thead>
         <tr>
-            <th>id</th>
-            <th>email</th>
+            <th>Id</th>
+            <th>Email</th>
             <th>Full Name</th>
+            <th>Option</th>
         </tr>
         </thead>
         <tbody>
         {% for user in users %}
-            <tr>
-                <th scope="row">{{ user.id }}</th>
-                <td>{{ user.fullName }}</td>
-                <td>{{ user.email}}</td>
-                <td>
-                    {#<a href="{{ path('todo_details', {'id': todo.id}) }} " class='btn btn-success'>View</a>#}
-                    {#<a href="{{ path('todo_edit', {'id': todo.id}) }}" class='btn btn-default'>Edit</a>#}
-                    {#<a href="{{ path('todo_delete', {'id': todo.id}) }}" class='btn btn-danger'>Delete</a>#}
-                    <a href="{{ path('admin_user') }}" class='btn btn-success'>View</a>
-                    <a href="{{ path('edit_user',{'id': user.id}) }}" class='btn btn-default'>Edit</a>
-                    <a href="{{ path('delete_user',{'id': user.id}) }}" class='btn btn-danger'>Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.fullName }}</td>
+            <td>{{ user.email}}</td>
+            <td>
+                <button type="button" class="btn-view"><a href="{{ path('admin_user') }}">View</a></button>
+                <button type="button" class="btn-edit"><a href="{{ path('edit_user',{'id': user.id}) }}">Edit</a></button>
+                <button type="button" class="btn-delete"><a href="{{ path('delete_user',{'id': user.id}) }}">Delete</a></button>
+            </td>
+        </tr>
+
         {% endfor %}
+            <td><button type="button" class=" btn-create"><a href="{{ path('admin_create_user') }}">Create user</a></button></td>
+            <td><button type="button" class=" btn-back"><a href="{{ path('admin_option') }}">Back</a></button></td>
         </tbody>
     </table>
 

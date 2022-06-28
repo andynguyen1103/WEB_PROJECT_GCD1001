@@ -4,13 +4,13 @@
 
 {% block body %}
 
-{#    <div class="example-wrapper">#}
-{#        {% if app.user %}#}
-{#            <div class="mb-3">#}
-{#                You are logged in as {{ app.user.fullName }}, <a href="{{ path('app_logout') }}">Logout</a>#}
-{#            </div>#}
-{#        {% endif %}#}
-{#    </div>#}
+    <div class="example-wrapper">
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.fullName }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
+    </div>
 
     <!-- Smartphones list -->
     <div class="section">

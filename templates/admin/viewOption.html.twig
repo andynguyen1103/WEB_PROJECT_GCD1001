@@ -1,9 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdminController!{% endblock %}
+{% block title %}Administrator{% endblock %}
 
 {% block body %}
+    <div class="example-wrapper">
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.fullName }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
+    </div>
 <a href="{{ path('admin_user') }}">Show users</a>
 <a href="{{ path('admin_product') }}">Show products</a>
-<a href="{{ path('admin_user') }}">Show categories</a>
+<a href="{{ path('admin_category') }}">Show categories</a>
 {% endblock %}
