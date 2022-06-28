@@ -28,4 +28,18 @@ class ProductController extends AbstractController
             ->find($id);
         return $this->render('product/details.html.twig',['products'=>$products]);
     }
+
+    /**
+     * @Route("/product/{category}", name="find_product_by_category")
+     */
+    public function findProductByCategory($category)
+    {
+        $products = $this->getDoctrine()
+            ->getManager()
+            ->getRepository(Product::class)
+            ->findByCategory($category);
+        return $this->render('product/index.html.twig', array(
+            'products' => $products,
+        ));
+    }
 }
