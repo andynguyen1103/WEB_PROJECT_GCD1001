@@ -3,10 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Order;
+use App\Entity\Product;
+use App\Entity\User;
+use App\Form\OrderType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class OrderController extends AbstractController
 {
@@ -21,7 +25,7 @@ class OrderController extends AbstractController
     }
 
     /**
-     * @Route("/order/details/{id}",name="order_details")
+     * @Route("/order/products/{id}",name="order_details")
      */
     public function detailsAction($id) {
         $orders = $this->getDoctrine()
@@ -44,14 +48,14 @@ class OrderController extends AbstractController
     }
 
     /**
-     * @Route("/order/create", name="order_create", methods={"GET","POST"})
+     * @Route("/order/product/{id}", name="order_create", methods={"GET","POST"})
      */
-    public function createAction(Request $request)
+    public function createAction($id,Request $request,UserInterface $user)
     {
         $order = new Order();
-        $form = $this->createForm(Order::class, $order);
+        $form = $this->createForm(OrderType::class, $order);
 
-        if ($this->saveChanges($form, $request, $order)) {
+        if ($this->saveChanges($form, $request, $order,$id,$user)) {
             $this->addFlash(
                 'notice',
                 'Order Added'
@@ -65,16 +69,18 @@ class OrderController extends AbstractController
         ]);
     }
 
-    public function saveChanges($form, $request, $order)
+    public function saveChanges($form, $request,Order $order,$id,$user)
     {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $order->setUser($request->request->get('order')['user']);
-            $order->setProduct($request->request->get('order')['product']);
-            $order->setVendor($request->request->get('order')['vendor']);
-            $order->setAmount($request->request->get('order')['amount']);
-            $order->setOrderDate(\DateTime::createFromFormat('Y-m-d', $request->request->get('order')['order_date']));
+
+            $currentUser=$this->getDoctrine()->getManager()->getRepository(User::class)->find($user->getId());
+            $product=$this->getDoctrine()->getManager()->getRepository(Product::class)->find($id);
+            $orderDate = new \DateTime();
+            $order->setUser($currentUser)
+                  ->setProduct($product)
+                  ->setOrderDate($orderDate);
             $em = $this->getDoctrine()->getManager();
             $em->persist($order);
             $em->flush();
@@ -82,21 +88,5 @@ class OrderController extends AbstractController
             return true;
         }
         return false;
-    }
-
-    /**
-     * @Route("/order/edit/{id}", name="order_edit")
-     */
-    public function editAction($id, Request $request) {
-        $em = $this->getDoctrine()->getManager();
-        $order = $em->getRepository(Order::class)->find($id);
-        $form = $this->createForm(Order::class,$order);
-
-        if ($this->saveChanges($form, $request, $order)) {
-            $this->addFlash('notice', "Order Edited");
-            return $this->redirectToRoute('order_list');
-        }
-
-        return $this->render('order/edit.html.twig', ['form'=>$form->createView()]);
     }
 }
