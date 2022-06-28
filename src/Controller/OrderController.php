@@ -44,7 +44,7 @@ class OrderController extends AbstractController
     }
 
     /**
-     * @Route("/todo/create", name="todo_create", methods={"GET","POST"})
+     * @Route("/order/create", name="order_create", methods={"GET","POST"})
      */
     public function createAction(Request $request)
     {
@@ -85,7 +85,7 @@ class OrderController extends AbstractController
     }
 
     /**
-     * @Route("/todo/edit/{id}", name="todo_edit")
+     * @Route("/order/edit/{id}", name="order_edit")
      */
     public function editAction($id, Request $request) {
         $em = $this->getDoctrine()->getManager();
