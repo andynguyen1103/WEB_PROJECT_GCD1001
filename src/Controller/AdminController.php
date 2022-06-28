@@ -292,5 +292,16 @@ class AdminController extends AbstractController
         );
     }
 
-
+    //delete category
+    /**
+     * @Route ("/admin/category/delete/{id}", name="delete_category")
+     */
+    public function deleteCategory($id)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $category=$em->getRepository(Category::class)->find($id);
+        $em->remove($category);
+        $em->flush();
+        return $this->redirectToRoute('admin_category');
+    }
 }

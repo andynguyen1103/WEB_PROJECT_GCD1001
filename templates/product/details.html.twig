@@ -1,12 +1,81 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <a href="{{ path('product_list') }}" class="btn btn-default">Back to Product List</a>
-    <hr/>
-    <h2 class="page-header">{{ products.name }}</h2>
-    <ul class="list-group">
-        <li class="list-group-item">Category: {{ products.category.name }}</li>
-        <li class="list-group-item">Price: {{ products.price }}</li>
-    </ul>
-    <p>{{ products.description }}</p>
+{#    <a href="{{ path('product_list') }}" class="btn btn-default">Back to Product List</a>#}
+{#    <hr/>#}
+{#    <h2 class="page-header">{{ products.name }}</h2>#}
+{#    <ul class="list-group">#}
+{#        <li class="list-group-item">Category: {{ products.category.name }}</li>#}
+{#        <li class="list-group-item">Price: {{ products.price }}</li>#}
+{#    </ul>#}
+{#    <p>{{ products.description }}</p>#}
+
+    <!-- product-detail content -->
+    <div class="bg-main">
+        <div class="box">
+            <div class="breadcumb">
+                <span><i class='bx bxs-chevrons-left'></i></span>
+                <a href="{{ path('product_list') }}">Back</a>
+            </div>
+        </div>
+        <div class="row product-row">
+
+            <div class="col-7 col-md-12">
+                <div class="product-info">
+                    <h2>
+                        {{ products.name }}
+                    </h2>
+                    <div class="product-info-detail">
+                        <span class="product-info-detail-title">Rated:</span>
+                        <span class="rating">
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                            </span>
+                    </div>
+                    <p class="product-description">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo libero alias officiis dolore doloremque eveniet culpa dignissimos, itaque, cum animi excepturi sed veritatis asperiores soluta, nisi atque quae illum. Ipsum.
+                    </p>
+                    <div class="product-info-price">{{ products.price }}</div>
+                    <div class="product-quantity-wrapper">
+                            <span class="product-quantity-btn">
+                                <i class='bx bx-minus'></i>
+                            </span>
+                        <span class="product-quantity">1</span>
+                        <span class="product-quantity-btn">
+                                <i class='bx bx-plus'></i>
+                            </span>
+                    </div>
+                    <div>
+                        <button class="btn-details btn-hover">add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <div class="box-header">
+                description
+            </div>
+            <div class="product-detail-description">
+                <div class="product-detail-description-content">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit laudantium obcaecati odit dolorem, doloremque accusamus esse neque ipsa dignissimos saepe quisquam tempore perferendis deserunt sapiente! Recusandae illum totam earum ratione.
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam incidunt maxime rerum reprehenderit voluptas asperiores ipsam quas consequuntur maiores, at odit obcaecati vero sunt! Reiciendis aperiam perferendis consequuntur odio quas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut quaerat eum veniam doloremque nihil repudiandae odio ratione culpa libero tempora. Expedita, quo molestias. Minus illo quis dignissimos aliquid sapiente error!
+                    </p>
+                    <img src="" alt="">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis accusantium officia, quae fuga in exercitationem aliquam labore ex doloribus repellendus beatae facilis ipsam. Veritatis vero obcaecati iste atque aspernatur ducimus.
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat quam praesentium id sit amet magnam ad, dolorum, cumque iste optio itaque expedita eius similique, ab adipisci dicta. Quod, quibusdam quas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, in corrupti ipsam sint error possimus commodi incidunt suscipit sit voluptatum quibusdam enim eligendi animi deserunt recusandae earum natus voluptas blanditiis?
+                    </p>
+                    <img src="" alt="">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi ullam quam fugit veniam ipsum recusandae incidunt, ex ratione, magnam labore ad tenetur officia! In, totam. Molestias sapiente deserunt animi porro?
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end product-detail content -->
 {% endblock %}
