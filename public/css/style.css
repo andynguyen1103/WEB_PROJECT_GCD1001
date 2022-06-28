@@ -190,8 +190,9 @@ img {
     background-color: var(--main-bg-color);
     width: 100%;
     top: calc(100% + 100px);
+    z-index: 2;
     box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 .mega-dropdown:hover .mega-content {
@@ -208,7 +209,6 @@ img {
 .mega-content ul {
     display: flex;
     flex-direction: column;
-
 }
 
 .mega-content ul > li > a {
@@ -231,6 +231,7 @@ img {
 .mega-content ul > li:hover {
     border-bottom: 2px solid var(--red);
 }
+
 /*End Mega Menu*/
 
 .box {
@@ -423,22 +424,278 @@ h2{
 }
 /*End Edit Profile*/
 
-/*Footer*/
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 -15px;
+
+/*Product List*/
+.section {
+    padding: 60px 0;
 }
 
-[class*="col-"] {
-    padding: 0 15px;
+.section-header{
+    text-align: center;
+    margin: 80px 0 70px;
+    text-transform: uppercase;
+}
+
+.section-header h2 {
+    font-size: 40px;
+    color: #000;
+}
+
+.product-card {
+    background-color: var(--main-bg-color);
+    transition: all 0.3s ease-in-out;
+    border-radius: 15px;
+}
+
+.product-card:hover {
+    background-color: var(--second-bg-color);
+}
+
+.product-card-img {
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-card-info {
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.product-card-name {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.product-card-price {
+    font-size: 15px;
+}
+
+.product-card-price{
+    margin-left: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--red);
+}
+
+.product-btn {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease-in-out;
+}
+
+.product-card:hover .product-btn {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.product-btn > * ~ * {
+    margin-left: 5px;
+}
+
+.btn-shop-now,
+.btn-cart-add {
+    font-size: 15px;
+    padding: 5px 10px;
+    line-height: 17px;
+    cursor: pointer;
+}
+
+.btn-flat {
+    display: inline-block;
+    border: 2px solid var(--btn-border-color);
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
+    padding: 5px 10px;
+    font-size: 15px;
+    outline: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.btn-hover {
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-hover:hover {
+    background-color: var(--btn-color);
+    color: var(--btn-bg);
+}
+/*End Product List*/
+
+/*Product Detail*/
+.product-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-img > img {
+    max-width: 70%;
+}
+
+.product-img-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-img-item {
+    width: 90px;
+    cursor: pointer;
+    margin: 0 10px;
+    border: 1px solid var(--third-bg-color);
+}
+
+.product-img-item:hover {
+    background-color: var(--second-bg-color);
+}
+
+.product-row {
+    padding: 45px 0;
+}
+
+.product-info > * ~ * {
+    margin-top: 25px;
+}
+
+.product-info h2{
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    font-weight: bold;
+    color: var(--btn-bg);
+    padding: 0 20px;
+}
+
+.product-info-detail-title {
+    font-weight: 600;
+    color: gray;
+    font-size: 20px;
+    padding: 0 20px;
+}
+
+.product-description {
+    font-size: 20px;
+    text-align: justify;
+    padding: 0 20px;
+}
+
+.product-info-price {
+    font-weight: 600;
+    font-size: 30px;
+    color: var(--red);
+    padding: 0 20px;
+}
+
+.product-quantity-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.product-quantity {
+    margin: 0 10px;
+    font-size: 25px;
+    padding: 0 20px;
+}
+
+.product-quantity-btn {
+    height: 30px;
+    width: 30px;
+    background-color: gray;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+
+}
+
+.product-quantity-btn i {
+    font-size: 20px;
+    color: var(--main-bg-color);
+}
+
+.product-detail-description {
+    position: relative;
+    margin-bottom: 90px;
+}
+
+.product-detail-description-content {
+    text-align: justify;
+    line-height: 26px;
+    font-size: 20px;
+    height: 600px;
+    overflow-y: hidden;
+    position: relative;
+}
+
+.product-detail-description-content.active {
+    height: max-content;
+}
+
+.box-header {
+    font-size: 25px;
+    font-weight: 600;
+    text-transform: capitalize;
     margin-bottom: 20px;
 }
 
-.col-3 {
-    width: 25%;
+.rating i {
+    color: #ffc107;
 }
 
+.breadcumb {
+    font-weight: 600;
+    padding-left: 20px;
+    font-size: 20px;
+}
+
+.breadcumb a {
+    text-transform: capitalize;
+}
+
+.breadcumb a:hover {
+    color: var(--red);
+}
+
+.breadcumb span {
+    margin: 0 15px;
+}
+
+.btn-details{
+    display: inline-block;
+    border: 2px solid var(--btn-border-color);
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
+    padding: 5px 10px;
+    font-size: 15px;
+    outline: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin: 0 30px;
+}
+
+/*End Product Detail*/
+
+/*Footer*/
 footer {
     padding: 100px 50px;
 
@@ -526,6 +783,35 @@ footer ul li {
 }
 /*End Footer*/
 
+/*Grid*/
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+[class*="col-"] {
+    padding: 0 15px;
+    margin-bottom: 20px;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+@media only screen and (max-width: 1280px) {
+    .col-md-6 {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .col-sm-12 {
+        width: 100%;
+    }
+}
+/*End Grid*/
+
 /*Responsive*/
 @media only screen and (max-width: 1280px) {
     .mobile-menu {
@@ -612,19 +898,13 @@ footer ul li {
     .mega-content ul > li > a {
         padding: 5px 0;
     }
+
+    .product-btn {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        position: relative;
+        margin-bottom: 20px;
+    }
 }
 /*End Responsive*/
-
-/*Footer Responsive*/
-@media only screen and (max-width: 1280px) {
-    .col-md-6 {
-        width: 50%;
-    }
-}
-
-@media only screen and (max-width: 750px) {
-    .col-sm-12 {
-        width: 100%;
-    }
-}
-/*End Footer Responsive*/

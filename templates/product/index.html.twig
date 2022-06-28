@@ -1,31 +1,130 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProductController!{% endblock %}
+{% block title %}Product{% endblock %}
 
 {% block body %}
 
-    <div class="example-wrapper">
-        {% if app.user %}
-            <div class="mb-3">
-                You are logged in as {{ app.user.fullName }}, <a href="{{ path('app_logout') }}">Logout</a>
-            </div>
-        {% endif %}
-    </div>
+{#    <div class="example-wrapper">#}
+{#        {% if app.user %}#}
+{#            <div class="mb-3">#}
+{#                You are logged in as {{ app.user.fullName }}, <a href="{{ path('app_logout') }}">Logout</a>#}
+{#            </div>#}
+{#        {% endif %}#}
+{#    </div>#}
 
-    <div class="bs-example" data-example-id="striped-table">
-        <table class="table table-striped">
-            <tbody>
+    <!-- Smartphones list -->
+    <div class="section">
+        <div class="section-header">
+            <h2>SMARTPHONES</h2>
+        </div>
+
+        <div class="row" id="Smartphone">
             {% for product in products %}
-                <tr>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.price }}</td>
-                    <td>
-                        <a href="{{ path ('product_details', {'id':product.id}) }}" class='btn btn-success'>View</a>
-                        <a href="#" class='btn btn-default'>Cart</a>
-                    </td>
-                </tr>
+            <div class="col-3 col-md-6 col-sm-12">
+                <div class="product-card">
+                    <div class="product-card-img">
+                        <img src="" alt="">
+                    </div>
+                    <div class="product-card-info">
+                        <div class="product-btn">
+{#                            <button class="btn-flat btn-hover btn-shop-now">Shop now</button>#}
+                            <a href="{{ path ('product_details', {'id':product.id}) }}" class="btn-flat btn-hover btn-shop-now">View</a>
+                            <button class="btn-flat btn-hover btn-cart-add">
+                                <i class='bx bxs-cart-add'></i>
+                            </button>
+                            <button class="btn-flat btn-hover btn-cart-add">
+                                <i class='bx bxs-heart'></i>
+                            </button>
+                        </div>
+                        <div class="product-card-name">
+                            {{ product.name }}
+                        </div>
+                        <div class="product-card-price">
+                            <span>{{ product.price }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {% endfor %}
-            </tbody>
-        </table>
+        </div>
+
     </div>
+    <!-- end Smartphones list -->
+
+    <!-- Headphones list -->
+    <div class="section">
+        <div class="section-header">
+            <h2>HEADPHONES</h2>
+        </div>
+
+        <div class="row" id="Smartphone">
+            {% for product in products %}
+                <div class="col-3 col-md-6 col-sm-12">
+                    <div class="product-card">
+                        <div class="product-card-img">
+                            <img src="" alt="">
+                        </div>
+                        <div class="product-card-info">
+                            <div class="product-btn">
+                                <button class="btn-flat btn-hover btn-shop-now">Shop now</button>
+                                <button class="btn-flat btn-hover btn-cart-add">
+                                    <i class='bx bxs-cart-add'></i>
+                                </button>
+                                <button class="btn-flat btn-hover btn-cart-add">
+                                    <i class='bx bxs-heart'></i>
+                                </button>
+                            </div>
+                            <div class="product-card-name">
+                                {{ product.name }}
+                            </div>
+                            <div class="product-card-price">
+                                <span>{{ product.price }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+    <!-- end Headphones list -->
+
+    <!-- Tablets list -->
+    <div class="section">
+        <div class="section-header">
+            <h2>TABLETS</h2>
+        </div>
+
+        <div class="row" id="Smartphone">
+            {% for product in products %}
+                <div class="col-3 col-md-6 col-sm-12">
+                    <div class="product-card">
+                        <div class="product-card-img">
+                            <img src="" alt="">
+                        </div>
+                        <div class="product-card-info">
+                            <div class="product-btn">
+                                <button class="btn-flat btn-hover btn-shop-now">Shop now</button>
+                                <button class="btn-flat btn-hover btn-cart-add">
+                                    <i class='bx bxs-cart-add'></i>
+                                </button>
+                                <button class="btn-flat btn-hover btn-cart-add">
+                                    <i class='bx bxs-heart'></i>
+                                </button>
+                            </div>
+                            <div class="product-card-name">
+                                {{ product.name }}
+                            </div>
+                            <div class="product-card-price">
+                                <span>{{ product.price }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+    <!-- end Tablets list -->
+
 {% endblock %}
