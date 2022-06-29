@@ -907,7 +907,7 @@ button{
     font-size: 17px;
     padding: 5px 10px;
     background-color:  #fba2d0;
-    margin-right: 10px;
+    margin-right: 30px;
 }
 .showProducts{
     outline: none;
@@ -916,7 +916,7 @@ button{
     font-size: 17px;
     padding: 5px 10px;
     background-color: #92B9E3;
-    margin-right: 10px;
+    margin-right: 30px;
 }
 .showCategories{
     outline: none;
@@ -925,6 +925,16 @@ button{
     font-size: 17px;
     padding: 5px 10px;
     background-color: #d7f9fa;
+    margin-right: 30px;
+}
+
+.showOrders{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+    padding: 5px 10px;
+    background-color: #f64c72;
 }
 
 /*End Admin*/

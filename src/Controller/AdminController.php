@@ -340,9 +340,9 @@ class AdminController extends AbstractController
         return $this->render('admin/viewOrder.html.twig',['orders'=>$orders]);
     }
 
-    //detete order
+    //delete order
     /**
-     * @Route ("/admin/order/delete/{id}", name="edit_order")
+     * @Route ("/admin/order/delete/{id}", name="delete_order")
      */
     public function deleteOrders($id)
     {
