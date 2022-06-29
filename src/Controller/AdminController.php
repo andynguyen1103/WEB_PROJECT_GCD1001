@@ -171,7 +171,6 @@ class AdminController extends AbstractController
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false
             ])
-            ->add('save',SubmitType::class)
             ->getForm();
         ;
         $form->handleRequest($request);

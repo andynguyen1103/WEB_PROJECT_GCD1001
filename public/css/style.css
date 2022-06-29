@@ -268,6 +268,7 @@ img {
     margin-bottom: 25px;
 }
 
+
 .container  .input-group input {
     width: 100%;
     height: 100%;
@@ -311,18 +312,6 @@ img {
     color: #6c5ce7;
 }
 
-.choice{
-    color: #6c5ce7;
-    font-size: 22px;
-    margin: 10px 10px;
-    padding-left: 20px;
-    font-weight: bold;
-
-}
-
-.category {
-    margin: 20px;
-}
 /*End Login and Register*/
 
 
@@ -331,6 +320,17 @@ img {
     background: #fff;
     width: 540px;
     height: 450px;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    box-shadow: 2px 5px 20px rgba(119, 119, 119, .5);
+}
+
+.editProduct{
+    background: #fff;
+    width: 542px;
+    height: 635px;
     margin: 0 auto;
     position: relative;
     margin-top: 50px;
@@ -707,7 +707,7 @@ h2{
 }
 /*End Product Detail*/
 
-/*Admin view*/
+/*Admin Function*/
 .userList{
     text-align: center;
     margin-top: 30px;
@@ -811,7 +811,63 @@ button a{
     color: white;
     font-weight: bold;
 }
-/*End Admin view*/
+
+.Admin{
+    font-size: 25px;
+    margin-top: 25px;
+}
+.AdminOption{
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+    color: #21244d;
+}
+button{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+    padding: 5px 10px;
+    background-color: #ffc4a4;
+}
+
+.option{
+    margin-top: 15px;
+    margin-bottom: 40px;
+}
+
+.Admin-area{
+    text-align: center;
+}
+.showUsers{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+    padding: 5px 10px;
+    background-color:  #fba2d0;
+    margin-right: 10px;
+}
+.showProducts{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+    padding: 5px 10px;
+    background-color: #92B9E3;
+    margin-right: 10px;
+}
+.showCategories{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+    padding: 5px 10px;
+    background-color: #d7f9fa;
+}
+
+
+/*End Admin*/
 
 /*Footer*/
 footer {
