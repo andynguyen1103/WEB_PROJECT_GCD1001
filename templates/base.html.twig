@@ -37,14 +37,14 @@
             <!-- top header -->
             <div class="bg-main">
                 <div class="top-header ">
-                    <a href="#" class="logo">T1</a>
+                    <a href="{{ path('product_list') }}" class="logo">T1</a>
                     <div class="search">
                         <input type="text" placeholder="Search">
                         <i class='bx bx-search-alt'></i>
                     </div>
                     <ul class="user-menu">
                         <li><a href="#"><i class='bx bx-bell'></i></a></li>
-                        <li><a href="#"><i class='bx bx-user-circle'></i></a></li>
+                        <li><a href="{{ path('app_user') }}"><i class='bx bx-user-circle'></i></a></li>
                         <li><a href="#"><i class='bx bx-cart'></i></a></li>
                     </ul>
                 </div>
@@ -55,7 +55,7 @@
             <div class="bg-second">
                 <div class="bottom-header ">
                     <ul class="main-menu">
-                        <li><a href="#">home</a></li>
+                        <li><a href="{{ path('product_list') }}">home</a></li>
 
                         <!-- mega menu -->
                         <li class="mega-dropdown">
@@ -155,8 +155,8 @@
             </div>
         </div>
     </footer>
-    <script src="{{ asset('js/app.js') }}"></script>
     {#End Footer#}
+    <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>
 

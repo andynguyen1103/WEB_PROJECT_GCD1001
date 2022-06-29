@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 :root {
     --main-bg-color: #fff;
     --second-bg-color: #f5f5f5;
@@ -21,6 +22,7 @@
 body {
     background-color: var(--main-bg-color);
     padding: 0;
+    font-family: 'Poppins', sans-serif;
 }
 
 a {
@@ -79,6 +81,43 @@ img {
 /*End For Mobile Menu*/
 
 
+/*Introduce Product*/
+.introduce {
+    height: calc(
+            100vh -
+            (
+            var(--top-header-size) + var(--top-header-size) +
+            var(--bottom-header-size)
+            )
+    );
+    padding: 0 20px;
+}
+
+.slide {
+    display: flex;
+}
+.content-1{
+    margin-top: 50px;
+    color: black;
+    font-weight: bold;
+}
+
+.content-2{
+    font-size: 70px;
+    margin: 10px 0 35px;
+    color: black;
+}
+
+.content-3{
+    color: black;
+
+}
+
+.info-content button {
+    margin-top: 30px;
+}
+/*End introduce product*/
+
 /*Top Header*/
 .top-header {
     display: flex;
@@ -92,6 +131,7 @@ img {
 .logo {
     font-size: 40px;
     font-weight: 700;
+    padding-left: 40px;
 }
 /*End Logo Website*/
 
@@ -136,6 +176,7 @@ img {
 /*User Menu*/
 .user-menu {
     display: flex;
+    padding-right: 40px;
 }
 
 .user-menu > li > a {
@@ -314,7 +355,25 @@ img {
 
 /*End Login and Register*/
 
+/*User area when login success*/
+.User{
+    font-size: 25px;
+    margin-top: 25px;
 
+}
+
+.User-area{
+    padding-left: 20px;
+    margin-bottom: -100px;
+}
+
+.UserOption{
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+    color: #21244d;
+}
+/*End*/
 /*Profile*/
 .userProfile{
     background: #fff;
@@ -440,7 +499,7 @@ h2{
 
 /*Product List*/
 .section {
-    padding: 60px 0;
+    padding: 60px 40px;
 }
 
 .section-header{
@@ -452,12 +511,14 @@ h2{
 .section-header h2 {
     font-size: 40px;
     color: #000;
+    margin-top: -198px;
 }
 
 .product-card {
     background-color: var(--main-bg-color);
     transition: all 0.3s ease-in-out;
     border-radius: 15px;
+
 }
 
 .product-card:hover {
@@ -866,7 +927,6 @@ button{
     background-color: #d7f9fa;
 }
 
-
 /*End Admin*/
 
 /*Footer*/
@@ -912,6 +972,7 @@ footer ul li {
     text-transform: capitalize;
     transition: transform 0.3s ease-in-out;
     font-size: 20px;
+
 }
 
 .menu li a:hover {
@@ -1080,5 +1141,50 @@ footer ul li {
         position: relative;
         margin-bottom: 20px;
     }
+
+    .introduce {
+        height: calc(
+                80vh -
+                (
+                var(--top-header-size) + var(--top-header-size) +
+                var(--bottom-header-size)
+                )
+        );
+        margin-bottom: 60px;
+    }
+
+    .slide {
+        flex-direction: column-reverse;
+    }
+
+    .content-3 {
+        display: none;
+    }
+
+    .info-content button {
+        margin-top: unset;
+    }
+
+    .slide > .info{
+        width: 100%;
+    }
 }
+
+@media only screen and (max-width: 750px) {
+    .introduce{
+        height: calc(
+                70vh -
+                (
+                var(--top-header-size) + var(--top-header-size) +
+                var(--bottom-header-size)
+                )
+        );
+        margin-bottom: 60px;
+    }
+    .content-2{
+        margin: unset;
+        font-size: 40px;
+    }
+}
+
 /*End Responsive*/

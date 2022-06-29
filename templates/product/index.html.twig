@@ -4,13 +4,45 @@
 
 {% block body %}
 
-    <div class="example-wrapper">
+    <div class="User-area">
         {% if app.user %}
-            <div class="mb-3">
-                You are logged in as {{ app.user.fullName }}, <a href="{{ path('app_logout') }}">Logout</a>
+            <div class="User">
+                | Welcome {{ app.user.fullName }}, <button><a href="{{ path('app_logout') }}" class="UserOption">Logout</a></button> |
             </div>
         {% endif %}
+        <!-- introduce section -->
+        <div class="introduce">
+            <div class="slider">
+                <!-- slide item -->
+                <div class="slide">
+                    <div class="info">
+                        <div class="info-content">
+                            <h3 class="content-1">
+                                Samsung Galaxy S22 Ultra
+                            </h3>
+                            <h2 class="content-2">
+                                New Inspiration 2022
+                            </h2>
+                            <p class="content-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati dolor commodi dignissimos culpa, eaque eos necessitatibus possimus veniam, cupiditate rerum deleniti? Libero, ducimus error? Beatae velit dolore sint explicabo! Fugit.
+                            </p>
+                            <div>
+                                <button class="btn-flat btn-hover">
+                                    <span>Shop now</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="img top-down">
+                        <img src="{{ asset('uploads/products/banner_11-removebg-preview.png') }}" alt="">
+                    </div>
+                </div>
+                <!-- end slide item -->
+            </div>
+        </div>
+        <!-- end introduce section -->
     </div>
+
 
     <!-- Smartphones list -->
     <div class="section">
@@ -27,7 +59,6 @@
                     </div>
                     <div class="product-card-info">
                         <div class="product-btn">
-{#                            <button class="btn-flat btn-hover btn-shop-now">Shop now</button>#}
                             <a href="{{ path ('product_details', {'id':product.id}) }}" class="btn-flat btn-hover btn-shop-now">View</a>
                             <button class="btn-flat btn-hover btn-cart-add">
                                 <i class='bx bxs-cart-add'></i>
@@ -47,84 +78,6 @@
             </div>
             {% endfor %}
         </div>
-
     </div>
     <!-- end Smartphones list -->
-
-    <!-- Headphones list -->
-    <div class="section">
-        <div class="section-header">
-            <h2>HEADPHONES</h2>
-        </div>
-
-        <div class="row" id="Smartphone">
-            {% for product in products %}
-                <div class="col-3 col-md-6 col-sm-12">
-                    <div class="product-card">
-                        <div class="product-card-img">
-                            <img src="" alt="">
-                        </div>
-                        <div class="product-card-info">
-                            <div class="product-btn">
-                                <button class="btn-flat btn-hover btn-shop-now">Shop now</button>
-                                <button class="btn-flat btn-hover btn-cart-add">
-                                    <i class='bx bxs-cart-add'></i>
-                                </button>
-                                <button class="btn-flat btn-hover btn-cart-add">
-                                    <i class='bx bxs-heart'></i>
-                                </button>
-                            </div>
-                            <div class="product-card-name">
-                                {{ product.name }}
-                            </div>
-                            <div class="product-card-price">
-                                <span>{{ product.price }}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-
-    </div>
-    <!-- end Headphones list -->
-
-    <!-- Tablets list -->
-    <div class="section">
-        <div class="section-header">
-            <h2>TABLETS</h2>
-        </div>
-
-        <div class="row" id="Smartphone">
-            {% for product in products %}
-                <div class="col-3 col-md-6 col-sm-12">
-                    <div class="product-card">
-                        <div class="product-card-img">
-                            <img src="" alt="">
-                        </div>
-                        <div class="product-card-info">
-                            <div class="product-btn">
-                                <button class="btn-flat btn-hover btn-shop-now">Shop now</button>
-                                <button class="btn-flat btn-hover btn-cart-add">
-                                    <i class='bx bxs-cart-add'></i>
-                                </button>
-                                <button class="btn-flat btn-hover btn-cart-add">
-                                    <i class='bx bxs-heart'></i>
-                                </button>
-                            </div>
-                            <div class="product-card-name">
-                                {{ product.name }}
-                            </div>
-                            <div class="product-card-price">
-                                <span>{{ product.price }}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-
-    </div>
-    <!-- end Tablets list -->
-
 {% endblock %}
