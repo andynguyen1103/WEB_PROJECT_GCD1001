@@ -14,10 +14,13 @@ class ProductController extends AbstractController
      * @Route("/product", name="product_list")
      */
     public function listAction() {
+        $categories= $this->getDoctrine()
+            ->getRepository(Category::class)
+            ->findAll();
         $products = $this->getDoctrine()
             ->getRepository(Product::class)
             ->findAll();
-        return $this->render('product/index.html.twig',['products'=>$products]);
+        return $this->render('product/index.html.twig',['products'=>$products, 'categories'=>$categories]);
     }
 
     /**

@@ -44,19 +44,20 @@
     </div>
 
 
-    <!-- Smartphones list -->
+    <!-- Product list -->
+    {% for category in categories %}
     <div class="section">
         <div class="section-header">
-            <h2>{{  }}</h2>
+            <h2>{{ category.name }}</h2>
         </div>
 
-        <div class="row" id="Smartphone">
+        <div class="row" id="{{ category.name }}">
             {% for product in products %}
-                {{ if product.category = "Iphone" || "Samsung"  }}
+                {% if product.category == category.name  %}
             <div class="col-3 col-md-6 col-sm-12">
                 <div class="product-card">
                     <div class="product-card-img">
-                        <img src="{{ asset('uploads/products/'product.image) }}" alt="">
+                        <img src="{{ asset('uploads/products/'~product.image) }}" alt="">
                     </div>
                     <div class="product-card-info">
                         <div class="product-btn">
@@ -79,8 +80,9 @@
             </div>
             {% endif %}
             {% endfor %}
-
         </div>
     </div>
-    <!-- end Smartphones list -->
+    <!-- end product list -->
+    {% endfor %}
+
 {% endblock %}
