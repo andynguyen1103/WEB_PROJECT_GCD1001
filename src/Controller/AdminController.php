@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Order;
 use App\Entity\Product;
 use App\Entity\User;
 use App\Form\UserType;
@@ -328,5 +329,29 @@ class AdminController extends AbstractController
         $em->remove($category);
         $em->flush();
         return $this->redirectToRoute('admin_category');
+    }
+
+    //view order
+    /**
+     * @Route ("/admin/order", name="view_order")
+     */
+    public function viewOrders()
+    {
+        $orders = $this->getDoctrine()->getManager()->getRepository(Order::class)->findAll();
+        return $this->render('admin/viewOrder.html.twig',['orders'=>$orders]);
+    }
+
+    //detete order
+    /**
+     * @Route ("/admin/order/delete/{id}", name="edit_order")
+     */
+    public function deleteOrders($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $order = $em->getRepository(Order::class)->find($id);
+        //remove from the database
+        $em->remove($order);
+        $em->flush();
+        return $this->redirectToRoute('view_order');
     }
 }
