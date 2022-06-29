@@ -2,7 +2,6 @@
 
 {% block body %}
     <a href="{{ path('order_list') }}" class="btn btn-default">Back to Order List</a>
-    {% for order in orders %}
     <h2 class="page-header">{{ orders.user.fullName}}</h2>
     <ul class="list-group">
         <li class="list-group-item">Category: {{ orders.product.category.name }}</li>
@@ -12,5 +11,4 @@
         <li class="list-group-item">Order date: <strong>{{ orders.orderDate|date('F j,Y, g:i a') }}</strong></li>
     </ul>
     <p>{{ orders.product.description }}</p>
-    {% endfor %}
 {% endblock %}
