@@ -6,7 +6,10 @@
     <body>
     <div class="container">
         <form action="" method="POST" class="login-email">
+
             <p class="login-text" style="font-size: 2rem; font-weight: 800;">Create Order</p>
+            <p>{{ app.user.fullName }}</p>
+            <p> {{ product.name }}</p>
             {{ form_start(form) }}
             <div class="input-group">
                 <input placeholder="Amount" {{ form_widget(form.amount)}}

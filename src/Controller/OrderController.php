@@ -54,6 +54,7 @@ class OrderController extends AbstractController
     {
         $order = new Order();
         $form = $this->createForm(OrderType::class, $order);
+        $product = $this->getDoctrine()->getManager()->getRepository(Product::class)->find($id);
 
         if ($this->saveChanges($form, $request, $order,$id,$user)) {
             $this->addFlash(
@@ -65,7 +66,8 @@ class OrderController extends AbstractController
         }
 
         return $this->render('order/create.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'product' => $product
         ]);
     }
 
