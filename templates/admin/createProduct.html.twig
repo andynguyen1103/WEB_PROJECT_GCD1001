@@ -5,30 +5,32 @@
 {% block body %}
     <body>
     <div class="container">
-        <form method="POST" class="login-email">
-            <p class="login-text" style="font-size: 2rem; font-weight: 800;">Create Product</p>
-            {{ form_start(form) }}
-
-                {{ form_row(form.name)}}
 
 
-                {{ form_row(form.category)}}
-
-
-                {{ form_row(form.price)}}
-
-
-                {{ form_row(form.description)}}
-
-
-                {{ form_row(form.productImage)}}
-
+        {{ form_start(form) }}
+        <p class="login-text" style="font-size: 2rem; font-weight: 800;">Create Product</p>
             <div class="input-group">
-                <button name="submit" class="btn">Create</button>
+                <input placeholder="Product Name" {{ form_widget(form.name)}}
+            </div>
+            <div class="input-group">
+                  {{ form_widget(form.category)}}
+            </div>
+            <div class="input-group">
+                <input placeholder="Price" {{ form_widget(form.price)}}
+            </div>
+            <div class="input-group">
+                <input placeholder="Description" {{ form_widget(form.description)}}
+            </div>
+            <div class="input-group">
+                    {{ form_widget(form.productImage)}}
             </div>
 
-        </form>
+            <div class="input-group">
+                <input type="submit" class="btn" value="Create">
+            </div>
         {{ form_end(form) }}
+
+
     </div>
     </body>
 {% endblock %}
