@@ -18,7 +18,6 @@ class OrderType extends AbstractType
         $builder
             ->add('amount',TextType::class)
             ->add('vendor')
-            ->add('save',SubmitType::class)
         ;
     }
 

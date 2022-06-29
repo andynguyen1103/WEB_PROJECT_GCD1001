@@ -1,11 +1,28 @@
-{#{% extends 'base.html.twig' %}#}
+{% extends 'base.html.twig' %}
 
-{#{% block body %}#}
+{% block title %}Create Order{% endblock %}
 
-{#{% endblock %}#}
+{% block body %}
+    <body>
+    <div class="container">
+        <form action="" method="POST" class="login-email">
+            <p class="login-text" style="font-size: 2rem; font-weight: 800;">Create Order</p>
+            {{ form_start(form) }}
+            <div class="input-group">
+                <input placeholder="Amount" {{ form_widget(form.amount)}}
+            </div>
+            <div class="input-group">
+                <h5>{{form_widget(form.vendor)}}</h5>
+            </div>
+            <div class="input-group">
+                <button name="submit" class="btn">Create</button>
+            </div>
+            {{ form_end(form) }}
+        </form>
+    </div>
+    </body>
+{% endblock %}
 
-{#{% block title %}#}
 
-{#{% endblock %}#}
-{{ form(form) }}
+
 
