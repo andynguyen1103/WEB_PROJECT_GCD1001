@@ -4,7 +4,6 @@
     <a href="{{ path('order_list') }}" class="btn btn-default">Back to Order List</a>
     <h2 class="page-header">{{ orders.user.fullName}}</h2>
     <ul class="list-group">
-        <li class="list-group-item">Category: {{ orders.product.category.name }}</li>
         <li class="list-group-item">Product: {{ orders.product.name }}</li>
         <li class="list-group-item">Vendor: {{ orders.vendor.name }}</li>
         <li class="list-group-item">Amount: {{ orders.amount }}</li>

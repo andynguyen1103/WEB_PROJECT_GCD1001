@@ -26,8 +26,9 @@ class OrderController extends AbstractController
     /**
      * @Route("/order/{id}",name="order_details")
      */
-    public function detailsAction($id) {
+    public function detailsAction(Order $id) {
         $orders = $this->getDoctrine()
+            ->getManager()
             ->getRepository(Order::class)
             ->find($id);
         return $this->render('order/details.html.twig',['orders'=>$orders]);
