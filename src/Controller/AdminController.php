@@ -163,7 +163,7 @@ class AdminController extends AbstractController
         //get product id from current user
         $product = new Product();
         //create a form for edit product
-        $form=$this->createFormBuilder($product)
+        $form=$this->createFormBuilder($product,['attr' => ['class' => 'login_email']])
             ->add('name')
             ->add('category')
             ->add('price')
@@ -197,11 +197,12 @@ class AdminController extends AbstractController
                 // updates the 'brochureFilename' property to store the PDF file name
                 // instead of its contents
                 $product->setImage($newFilename);
+                $em->persist($product);
+                $em->flush();
+                return $this->redirectToRoute('admin_product');
             }
             // ... persist the $product variable or any other work
-            $em->persist($product);
-            $em->flush();
-            return $this->redirectToRoute('admin_product');
+
         }
         return $this->render('admin/createProduct.html.twig', [
                 'form' => $form->createView()]

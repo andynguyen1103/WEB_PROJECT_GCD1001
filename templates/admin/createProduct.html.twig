@@ -5,9 +5,9 @@
 {% block body %}
     <body>
     <div class="container">
-        <form action="" method="POST" class="login-email">
-            <p class="login-text" style="font-size: 2rem; font-weight: 800;">Create Product</p>
-            {{ form_start(form) }}
+
+        {{ form_start(form) }}
+        <p class="login-text" style="font-size: 2rem; font-weight: 800;">Create Product</p>
             <div class="input-group">
                 <input placeholder="Product Name" {{ form_widget(form.name)}}
             </div>
@@ -24,10 +24,11 @@
                     {{ form_widget(form.productImage)}}
             </div>
             <div class="input-group">
-                <button name="submit" class="btn">Create</button>
+                <input type="submit" class="btn" value="Create">
             </div>
-            {{ form_end(form) }}
-        </form>
+
+        {{ form_end(form) }}
+
     </div>
     </body>
 {% endblock %}
