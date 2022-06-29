@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/product", name="product_list")
+     * @Route("/admin/product", name="product_list")
      */
     public function listAction() {
         $products = $this->getDoctrine()

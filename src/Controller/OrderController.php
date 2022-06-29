@@ -17,15 +17,14 @@ class OrderController extends AbstractController
     /**
      * @Route("/order",name="order_list")
      */
-    public function listAction() {
-        $orders = $this->getDoctrine()
-            ->getRepository(Order::class)
-            ->findAll();
+    public function listAction(UserInterface $user) {
+        $currentUser=$this->getDoctrine()->getManager()->getRepository(User::class)->find($user->getId());
+        $orders = $currentUser->getOrders();
         return $this->render('order/index.html.twig',['orders'=>$orders]);
     }
 
     /**
-     * @Route("/order/products/{id}",name="order_details")
+     * @Route("/order/{id}",name="order_details")
      */
     public function detailsAction($id) {
         $orders = $this->getDoctrine()

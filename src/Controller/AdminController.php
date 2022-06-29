@@ -7,14 +7,17 @@ use App\Entity\Product;
 use App\Entity\User;
 use App\Form\UserType;
 
+use PhpParser\Node\Scalar\MagicConst\File;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -164,13 +167,38 @@ class AdminController extends AbstractController
             ->add('category')
             ->add('price')
             ->add('description')
-
+            ->add('productImage',FileType::class,[
+                // unmapped means that this field is not associated to any entity property
+                'mapped' => false
+            ])
+            ->add('save',SubmitType::class)
             ->getForm();
         ;
         $form->handleRequest($request);
         if ($form->isSubmitted()&&$form->isValid())
         {
-            //save changes
+            $productImage= $form['productImage']->getData();
+            // this condition is needed because the 'brochure' field is not required
+            // so the PDF file must be processed only when a file is uploaded
+            if ($productImage) {
+                // this is needed to safely include the file name as part of the URL
+                $newFilename = hash('md5',$productImage).'.'.$productImage->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $productImage->move(
+                        $this->getParameter('products_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'brochureFilename' property to store the PDF file name
+                // instead of its contents
+                $product->setImage($newFilename);
+            }
+            // ... persist the $product variable or any other work
             $em->persist($product);
             $em->flush();
             return $this->redirectToRoute('admin_product');
