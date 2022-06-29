@@ -225,15 +225,42 @@ class AdminController extends AbstractController
             ->add('category')
             ->add('price')
             ->add('description')
+            ->add('productImage',FileType::class,[
+                // unmapped means that this field is not associated to any entity property
+                'mapped' => false
+            ])
+
             ->getForm();
         ;
         $form->handleRequest($request);
         if ($form->isSubmitted()&&$form->isValid())
         {
-            //save changes
-            $em->persist($product);
-            $em->flush();
-            return $this->redirectToRoute('admin_product');
+            $productImage= $form['productImage']->getData();
+            // this condition is needed because the 'brochure' field is not required
+            // so the PDF file must be processed only when a file is uploaded
+            if ($productImage) {
+                // this is needed to safely include the file name as part of the URL
+                $newFilename = hash('md5',$productImage).'.'.$productImage->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $productImage->move(
+                        $this->getParameter('products_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'brochureFilename' property to store the PDF file name
+                // instead of its contents
+                $product->setImage($newFilename);
+                $em->persist($product);
+                $em->flush();
+                return $this->redirectToRoute('admin_product');
+            }
+            // ... persist the $product variable or any other work
+
         }
         return $this->render('admin/editProduct.html.twig', [
                 'form' => $form->createView()]
