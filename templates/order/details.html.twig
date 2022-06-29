@@ -1,13 +1,27 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <a href="{{ path('order_list') }}" class="btn btn-default">Back to Order List</a>
-    <h2 class="page-header">{{ orders.user.fullName}}</h2>
-    <ul class="list-group">
-        <li class="list-group-item">Product: {{ orders.product.name }}</li>
-        <li class="list-group-item">Vendor: {{ orders.vendor.name }}</li>
-        <li class="list-group-item">Amount: {{ orders.amount }}</li>
-        <li class="list-group-item">Order date: <strong>{{ orders.orderDate|date('F j,Y, g:i a') }}</strong></li>
-    </ul>
-    <p>{{ orders.product.description }}</p>
+    <div class="orderDetail">
+        <div class="leftbox"></div>
+        <div class="rightbox">
+            <div class="edit-user">
+                <h1>Details</h1>
+                <h2>Name</h2>
+                {{ orders.user.fullName}}
+                <h2>Product</h2>
+                {{ orders.product.name }}
+                <h2>Vendor</h2>
+                {{ orders.vendor.name }}
+                <h2>Amount</h2>
+                {{ orders.amount }}
+                <h2>Order date</h2>
+                {{ orders.orderDate|date('F j,Y, g:i a') }}
+                <h2>Description</h2>
+                {{ orders.product.description }}
+            </div>
+            <button name="submit" class="editBtn"><a href="{{ path('order_list') }}">Back</a></button>
+
+        </div>
+    </div>
+
 {% endblock %}

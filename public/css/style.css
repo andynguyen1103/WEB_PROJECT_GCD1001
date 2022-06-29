@@ -940,9 +940,20 @@ button{
     padding: 5px 10px;
     background-color: #f64c72;
 }
-
 /*End Admin*/
 
+/*Order Detail*/
+.orderDetail{
+    background: #fff;
+    width: 542px;
+    height: 700px;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    box-shadow: 2px 5px 20px rgba(119, 119, 119, .5);
+}
+/*End*/
 /*Footer*/
 footer {
     padding: 100px 50px;
