@@ -42,7 +42,6 @@ class OrderController extends AbstractController
         $order = $em->getRepository(Order::class)->find($id);
         $em->remove($order);
         $em->flush();
-
         $this->addFlash('error','Order deleted');
         return $this->redirectToRoute('order_list');
     }
@@ -61,7 +60,6 @@ class OrderController extends AbstractController
                 'notice',
                 'Order Added'
             );
-
             return $this->redirectToRoute('order_list');
         }
 
@@ -70,13 +68,11 @@ class OrderController extends AbstractController
             'product' => $product
         ]);
     }
-
     public function saveChanges($form, $request,Order $order,$id,$user)
     {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $currentUser=$this->getDoctrine()->getManager()->getRepository(User::class)->find($user->getId());
             $product=$this->getDoctrine()->getManager()->getRepository(Product::class)->find($id);
             $orderDate = new \DateTime();
@@ -86,7 +82,6 @@ class OrderController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($order);
             $em->flush();
-
             return true;
         }
         return false;

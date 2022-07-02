@@ -20,7 +20,10 @@ class ProductController extends AbstractController
         $products = $this->getDoctrine()
             ->getRepository(Product::class)
             ->findAll();
-        return $this->render('product/index.html.twig',['products'=>$products, 'categories'=>$categories]);
+        return $this->render('product/index.html.twig',[
+            'products'=>$products,
+            'categories'=>$categories
+        ]);
     }
 
     /**

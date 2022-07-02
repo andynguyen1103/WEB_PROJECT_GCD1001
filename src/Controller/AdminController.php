@@ -172,7 +172,6 @@ class AdminController extends AbstractController
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false
             ])
-
             ->getForm();
         ;
         $form->handleRequest($request);
@@ -184,7 +183,6 @@ class AdminController extends AbstractController
             if ($productImage) {
                 // this is needed to safely include the file name as part of the URL
                 $newFilename = hash('md5',$productImage).'.'.$productImage->guessExtension();
-
                 // Move the file to the directory where brochures are stored
                 try {
                     $productImage->move(
@@ -194,7 +192,6 @@ class AdminController extends AbstractController
                 } catch (FileException $e) {
                     // ... handle exception if something happens during file upload
                 }
-
                 // updates the 'brochureFilename' property to store the PDF file name
                 // instead of its contents
                 $product->setImage($newFilename);
@@ -203,11 +200,8 @@ class AdminController extends AbstractController
                 return $this->redirectToRoute('admin_product');
             }
             // ... persist the $product variable or any other work
-
         }
-        return $this->render('admin/createProduct.html.twig', [
-                'form' => $form->createView()]
-        );
+        return $this->render('admin/createProduct.html.twig', ['form' => $form->createView()]);
     }
     //edit product
     /**
@@ -229,7 +223,6 @@ class AdminController extends AbstractController
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false
             ])
-
             ->getForm();
         ;
         $form->handleRequest($request);
@@ -241,7 +234,6 @@ class AdminController extends AbstractController
             if ($productImage) {
                 // this is needed to safely include the file name as part of the URL
                 $newFilename = hash('md5',$productImage).'.'.$productImage->guessExtension();
-
                 // Move the file to the directory where brochures are stored
                 try {
                     $productImage->move(
@@ -251,7 +243,6 @@ class AdminController extends AbstractController
                 } catch (FileException $e) {
                     // ... handle exception if something happens during file upload
                 }
-
                 // updates the 'brochureFilename' property to store the PDF file name
                 // instead of its contents
                 $product->setImage($newFilename);
@@ -260,15 +251,11 @@ class AdminController extends AbstractController
                 return $this->redirectToRoute('admin_product');
             }
             // ... persist the $product variable or any other work
-
         }
-        return $this->render('admin/editProduct.html.twig', [
-                'form' => $form->createView()]
-        );
+        return $this->render('admin/editProduct.html.twig', ['form' => $form->createView()]);
     }
 
     //delete product
-
     /**
      * @Route ("/admin/product/delete/{id}", name="delete_product")
      */
@@ -303,7 +290,6 @@ class AdminController extends AbstractController
         //create a form for edit category
         $form=$this->createFormBuilder($category)
             ->add('name')
-
             ->getForm();
         ;
         $form->handleRequest($request);

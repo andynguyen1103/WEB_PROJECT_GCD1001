@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Order List{% endblock %}
-
 {% block body %}
     <div class="userList">
        Order List
@@ -10,9 +8,9 @@
         <thead>
         <tr>
             <th>Id</th>
-            <th>User Id</th>
-            <th>Product Id</th>
-            <th>Vendor Id</th>
+            <th>User Name</th>
+            <th>Product Name</th>
+            <th>Vendor Name</th>
             <th>Amount</th>
             <th>Date</th>
             <th>Option</th>
@@ -22,14 +20,16 @@
         {% for order in orders %}
             <tr>
                 <td>{{ order.id }}</td>
-                <td>{{ order.user.id}}</td>
-                <td>{{ order.product.id}}</td>
-                <td>{{ order.vendor.id}}</td>
+                <td>{{ order.user.fullName}}</td>
+                <td>{{ order.product.name}}</td>
+                <td>{{ order.vendor.name}}</td>
                 <td>{{ order.amount}}</td>
                 <td>{{ order.orderDate|date('F j,Y, g:i a') }}</td>
                 <td>
-                    <button type="button" class="btn-delete"><a href="{{ path('order_delete',{'id': order.id}) }}">Delete</a></button>
-                    <button type="button" class="btn-view"><a href="{{ path('order_details',{'id': order.id}) }}">View</a></button>
+                    <button type="button" class="btn-delete">
+                        <a href="{{ path('order_delete',{'id': order.id}) }}">Delete</a></button>
+                    <button type="button" class="btn-view">
+                        <a href="{{ path('order_details',{'id': order.id}) }}">View</a></button>
                 </td>
             </tr>
         {% endfor %}

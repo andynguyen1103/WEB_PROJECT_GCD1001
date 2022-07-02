@@ -72,6 +72,4 @@ class UserController extends AbstractController
          $session->invalidate();
          return $this->redirectToRoute('admin_product');
      }
-
-
 }

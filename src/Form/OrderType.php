@@ -20,7 +20,6 @@ class OrderType extends AbstractType
             ->add('vendor')
         ;
     }
-
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

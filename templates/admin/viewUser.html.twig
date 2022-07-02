@@ -27,12 +27,10 @@
                 <button type="button" class="btn-delete"><a href="{{ path('delete_user',{'id': user.id}) }}">Delete</a></button>
             </td>
         </tr>
-
         {% endfor %}
             <td><button type="button" class=" btn-create"><a href="{{ path('admin_create_user') }}">Create user</a></button></td>
             <td><button type="button" class=" btn-back"><a href="{{ path('admin_option') }}">Back</a></button></td>
         </tbody>
     </table>
-
 {% endblock %}
 

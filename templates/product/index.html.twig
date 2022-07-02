@@ -43,14 +43,12 @@
         <!-- end introduce section -->
     </div>
 
-
     <!-- Product list -->
     {% for category in categories %}
     <div class="section">
         <div class="section-header">
             <h2>{{ category.name }}</h2>
         </div>
-
         <div class="row" id="{{ category.name }}">
             {% for product in products %}
                 {% if product.category == category.name  %}

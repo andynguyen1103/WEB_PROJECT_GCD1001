@@ -1,8 +1,5 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Edit Product{% endblock %}
-
-
 {% block body %}
     <div class="editProduct">
         <div class="leftbox"></div>
@@ -18,6 +15,8 @@
                 {{ form_widget(form.price)}}
                 <h2>Description</h2>
                 {{ form_widget(form.description)}}
+                <h2>Product Image</h2>
+                {{ form_widget(form.productImage)}}
             </div>
             <button name="submit" class="editBtn">Save</button>
             <button name="submit" class="editBtn"><a href="{{ path('admin_user') }}">Back</a></button>

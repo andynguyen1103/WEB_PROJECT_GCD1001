@@ -1,5 +1,4 @@
 {% extends 'base.html.twig' %}
-
 {% block body %}
     <div class="orderDetail">
         <div class="leftbox"></div>
@@ -20,8 +19,6 @@
                 {{ orders.product.description }}
             </div>
             <button name="submit" class="editBtn"><a href="{{ path('order_list') }}">Back</a></button>
-
         </div>
     </div>
-
 {% endblock %}
